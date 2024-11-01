@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 const instance=axios.create({
     baseURL:"https://react-mini-projects-api.classbon.com"
+    baseURL:"https://react-mini-projects-api.classbon.com"
 })
 const useAxios = (axiosParams)=>{
     const [response,setRespone]=useState([])
