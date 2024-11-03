@@ -3,18 +3,21 @@ import ItemList from "./listItem"
 const List = ({fastFoodItem})=>{
 
     return(
-        <div className="tab-content" >
+        <div className=" row " >
 
-          <div className="tab-pane fade active show" id="menu-starters">
+
             {
+                
                 fastFoodItem.map(List=>{
                     return(
 
                         <>
-                         <div className="tab-header text-center" key={List}>
-              <p>Menu</p>
-              <h3>Starters</h3>
-                 <ItemList {...List}></ItemList>
+                         <div className=" col-md-4 col-sm-6 tab-header text-center" key={List}>
+                         <div className="row gy-5">
+                            
+                                    <ItemList {...List}></ItemList>
+                            </div>
+                
             </div>
          
                         </>
@@ -25,10 +28,10 @@ const List = ({fastFoodItem})=>{
 
             }
             
-            <ItemList/>
+          
            
           </div>
-          </div>
+        
     )
 }
 
