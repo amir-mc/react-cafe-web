@@ -1,20 +1,19 @@
-const ItemList=({name})=>{
+const ItemList=({name,price,imageUrl})=>{
 
     return(
-        <div className="row gy-5">
+        
 
-        <div className="col-lg-4 menu-item">
-          <a href="assets/img/menu/menu-item-1.png" className="glightbox"><img src="assets/img/menu/menu-item-1.png" className="menu-img img-fluid" alt=""/></a>
-          <h4>{name}</h4>
+        <div className=" menu-item  product-card">
+          <a href="assets/img/menu/menu-item-1.png" className="glightbox">
+          <img src={imageUrl} className="menu-img img-fluid" alt=""/></a>
+          <h4>food</h4>
           <p className="ingredients">
            {name}
           </p>
           <p className="price">
-          {name}
+          {price}
           </p>
         </div>
-
-      </div>
     )
 }
 export default ItemList
