@@ -13,13 +13,16 @@ function App() {
   const [fastFoodItem , ,loading] = useAxios({
     url
   });
+  const filteritem=(categoryId)=>{
+    setUrl(`/FastFood/list/${categoryId ? '?categoryId=' + categoryId:'' }`)
+  }
   return (
     <>
     <Heder/>
     <main className="main">
       <Hero/>
       <Aboutus></Aboutus>
-      <CategoryList></CategoryList>
+      <CategoryList filteritem={filteritem}></CategoryList>
       <List fastFoodItem={fastFoodItem}></List>
       </main>
     </>
