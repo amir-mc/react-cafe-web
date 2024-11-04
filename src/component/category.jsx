@@ -1,27 +1,32 @@
 
 import useAxios from "../useAxios";
+//import Loding from "./Loading/loading";
 
-const CategoryList=()=>{
+const CategoryList=({filteritem})=>{
     const [categoryies, ,loding]=useAxios({
         url:'/FoodCategory/categories'
     })
 
-   // const render=()=>{
-    //    if(loding)
-      //  {
-    //        return(<Loding theme={"primary"} ></Loding>)
-     //   }
+    // const render=()=>{
+    //     if(loding)
+    //     {
+    //     return(<Loding theme={"primary"} ></Loding>)
+    //     }
         
-  //  }
+    // }
+
+
     return(
         <ul className="nav nav-tabs d-flex justify-content-center" >
             {
                 categoryies.map(category=>(
 
-                     <li className="nav-item" key={category.id}>
-            <a className="nav-link active show">
-              <h4>{category.name}</h4>
-              </a>
+                     <li className="nav-item" key={category.id} onClick={()=>filteritem(category.id)}>
+              <a href="/#" className="nav-link ">   <h2>
+                {category.name}
+                </h2>   </a>
+            
+                       
                   </li>
                 ))
          
@@ -30,5 +35,8 @@ const CategoryList=()=>{
 
         </ul>
     )
+    
+  
+    
 }
 export default CategoryList
