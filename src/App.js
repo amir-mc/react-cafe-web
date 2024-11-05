@@ -7,6 +7,7 @@ import Heder from './component/header';
 import Hero from './component/hero';
 import List from './component/list';
 import useAxios from './useAxios';
+import Commenets from './component/comment';
  
 function App() {
   const [url, setUrl]= useState('/FastFood/list');
@@ -24,6 +25,7 @@ function App() {
       <Aboutus></Aboutus>
       <CategoryList filteritem={filteritem}></CategoryList>
       <List fastFoodItem={fastFoodItem}></List>
+      <Commenets></Commenets>
       </main>
     </>
     
