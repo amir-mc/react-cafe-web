@@ -1,5 +1,9 @@
+import { useThemecontext } from "../context"
 
 const ItemList=({name,price,imageUrl})=>{
+
+  const themeContext=useThemecontext()
+  const dark=themeContext.dark
 
     return(
         
@@ -8,10 +12,10 @@ const ItemList=({name,price,imageUrl})=>{
           <a href="assets/img/menu/menu-item-1.png" className="glightbox">
           <img src={imageUrl} className="menu-img img-fluid" alt=""/></a>
           <h4>food</h4>
-          <p className="ingredients">
+          <p className={`ingredients ${dark ?  ' text-light': ' text-info'}`}>
            {name}
           </p>
-          <p className="price">
+          <p className={`price ${dark ?  ' text-light': ' text-info'}`}>
           {price}
           </p>
         </div>
