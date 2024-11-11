@@ -1,50 +1,72 @@
+import useAxios from "../../useAxios"
+import CategoryList from "../category"
+import { Helmet } from 'react-helmet';
+import './com.css'
+import { useEffect, useState } from "react";
 
-.slider-container {
-    width: 80%;
-    max-width: 600px;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+const Commenets=()=>{
+  // coment.map(Comment=>(
+    const [coment, ,loding]=useAxios({
+        url:'/Comments'
+    })
+
+const [CurrentIndex,setCurrentIndex]=useState(0)
+
+
+// Automatic slide every 3 seconds
+useEffect(() => {
+  const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1));
+  }, 3000); // Change comment every 3 seconds
+
+  // Clean up the interval when the component unmounts
+  return () => clearInterval(interval);
+}, []);
+
+// Function to go to the next comment
+const nextComment = () => {
+  setCurrentIndex((prevIndex) => (prevIndex + 1) );
+};
+
+// Function to go to the previous comment
+const prevComment = () => {
+  setCurrentIndex((prevIndex) => (prevIndex - 1 ) );
+};
+
+return (
+<>
+
+
+
+
+<div className="slider-container">
+      <div className="slider-content">
+  {
+      coment.map(Comment=>(
+    <>
+<div className="comment">
+              <p>{Comment.name}</p>
+          </div>
+    
+    </>
+   ))
+  }        
+      </div>
+
+      
+      <div className="controls">
+          <button onClick={prevComment}>&#10094;</button>
+          <button onClick={nextComment}>&#10095;</button>
+      </div>
+  </div>
+   
+
+</>
+
+)
+
 }
 
-.slider-content {
-    display: flex;
-    transition: transform 0.5s ease;
-}
+   
 
-.comment {
-    width: 100%;
-    flex-shrink: 0;
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: center;
-}
-
-.comment p {
-    font-size: 1.1em;
-    color: #555;
-}
-
-.controls {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    transform: translateY(-50%);
-}
-
-.controls button {
-    background-color: #f1f1f1;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 18px;
-}
-
-.controls button:hover {
-    background-color: #ddd;
-}
+export default Commenets
